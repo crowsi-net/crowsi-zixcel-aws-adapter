@@ -1,16 +1,30 @@
-# Crowsi Zixcel AWS Adapter
+# crowsi-zixcel-aws-adapter
 
-`ZixcelAwsCredentialExecutor` composes the Crowsi credential-use boundary with
-Zixcel's AWS-specific operation handling. It runs inside the trusted credential
-runtime and does not expose secrets to callers.
+Connect an authorized AWS operation to credential use inside Crowsi custody.
 
-Zixcel owns AWS schemas and operation semantics. Crowsi owns authorization,
-custody and bounded execution. HAT grants, Hatter state and product UI do not
-belong in this package.
+## What you can do
 
-## Acceptance
+- Validate the AWS operation and principal purpose.
+- Compose declared signing and runtime interfaces.
 
-Verify exact operation/target binding, refusal outside the authorized scope,
-secret-free projections and cleanup after provider failure. Configuration and
-real provider execution must be verified separately from fixture tests. No AWS
-account, external operation or credential is provisioned by installing this crate.
+## Current scope
+
+The caller supplies exact scope and transport. Neither adapter availability nor a valid plan grants AWS account access.
+
+Package distribution is not activated by this documentation. Use the checked-in source and the declared dependency versions; published availability must be verified separately.
+
+## Getting started
+
+Install Rust 1.97 or newer and make the declared dependencies available. Use the configured private registry when a dependency is not distributed publicly. Run from this repository:
+
+```sh
+cargo test --locked
+```
+
+## Documentation and source
+
+[Interface reference](docs/interface-reference.md)
+
+[Usage guide](docs/getting-started.md)
+
+[Schemas](schemas) · [Detailed documentation](docs) · [Implementation and public interfaces](src) · [Verification cases](tests) · [Contributing](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [License](LICENSE) · [Attribution notices](NOTICE)
